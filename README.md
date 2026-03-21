@@ -19,3 +19,5 @@ Traditional Chinese (TC) localized Powerline-style Starship prompt preset, inspi
 ## Required Font
 
 Requires a [Nerd Font](https://www.nerdfonts.com/) for the symbols to render correctly.
+
+For the best experience with Traditional Chinese (TC) characters and Nerd Font symbols, it is highly recommended to use the **[ENS Font](https://ens.tw/font)**. It combines *Meslo LGSDZ Nerd Font* with *LXGW WenKai TC*, ensuring consistent and beautiful rendering for this preset.
