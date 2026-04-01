@@ -46,7 +46,7 @@ read_only = " 󰌾"
 [git_branch]
 symbol = " "
 style = "bg:#394260"
-format = '[[ 於 $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+format = '[[ 位於 $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_commit]
 tag_symbol = "  "
@@ -54,38 +54,38 @@ tag_symbol = "  "
 [git_status]
 style = "bg:#394260"
 format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-conflicted = "牴"
-ahead = "先"
-behind = "後"
-modified = "異"
-staged = "待"
-untracked = "逸"
-deleted = "亡"
-renamed = "遷"
-stashed = "匿"
+conflicted = "衝突"
+ahead = "領先"
+behind = "落後"
+modified = "修改"
+staged = "暫存"
+untracked = "未追蹤"
+deleted = "刪除"
+renamed = "重新命名"
+stashed = "貯存"
 
 [git_state]
 style = "bg:#394260"
 format = '[[ $state($progress_current/$progress_total) ](fg:#769ff0 bg:#394260)]($style)'
-rebase = "重基"
+rebase = "重定基底"
 merge = "合併"
-revert = "復原"
-cherry_pick = "摘取"
-bisect = "二分"
-am = "郵補"
-am_or_rebase = "郵補/重基"
+revert = "還原"
+cherry_pick = "揀選"
+bisect = "二分搜尋"
+am = "am"
+am_or_rebase = "am/重定基底"
 
 # ─── VCS (Chinese TC) ────────────────────────────────────────
 
 [fossil_branch]
 symbol = " "
 style = "bg:#394260"
-format = '[[ 於 $symbol$branch ](fg:#769ff0 bg:#394260)]($style)'
+format = '[[ 位於 $symbol$branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [hg_branch]
 symbol = " "
 style = "bg:#394260"
-format = '[[ 於 $symbol$branch ](fg:#769ff0 bg:#394260)]($style)'
+format = '[[ 位於 $symbol$branch ](fg:#769ff0 bg:#394260)]($style)'
 
 # ─── Languages (tokyo-night bg layer) ────────────────────────
 
