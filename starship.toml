@@ -29,8 +29,8 @@ $time\
 # ─── Prompt Character ───────────────────────────────────────
 
 [character]
-success_symbol = "[](fg:#769ff0)"
-error_symbol = "[](fg:#e06c75)"
+success_symbol = "[](fg:#769ff0)"
+error_symbol = "[](fg:#e06c75)"
 
 # ─── Username ────────────────────────────────────────────────                                                    
                                                                                                                      
@@ -38,7 +38,7 @@ error_symbol = "[](fg:#e06c75)"
 show_always = true                                                                                                 
 style_user = "bg:#a3aed2 fg:#090c0c"                      
 style_root = "bg:#a3aed2 fg:#e06c75"                                                                               
-format = "[ $user ]($style)"
+format = "[ $user ]($style)"
  
 # ─── Directory ────────────────────────────────────────────────
 
