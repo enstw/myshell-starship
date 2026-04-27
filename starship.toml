@@ -2,7 +2,7 @@
 
 format = """
 [ ](bg:#1d2230)[ ](bg:#495065)[ ](bg:#757e9b)\
-$os\
+[ $os$hostname  ](bg:#a3aed2 fg:#090c0c)\
 $username\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
@@ -39,6 +39,12 @@ show_always = true
 style_user = "bg:#a3aed2 fg:#090c0c"                      
 style_root = "bg:#a3aed2 fg:#e06c75"                                                                               
 format = "[ $user ]($style)"
+
+# ─── Hostname ────────────────────────────────────────────────
+
+[hostname]
+ssh_only = false
+format = "$hostname"
  
 # ─── Directory ────────────────────────────────────────────────
 
@@ -167,8 +173,7 @@ format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [os]
 disabled = false
-style = "bg:#a3aed2 fg:#090c0c"
-format = "[ $symbol ]($style)"
+format = "$symbol"
 
 [os.symbols]
 Alpaquita = " "
