@@ -14,7 +14,7 @@
 # ─────────────────────────────────────────────────────────────
 
 format = """
-[┌──](bold green)\
+[┌──](green)\
 $username\
 $os\
 $hostname\
@@ -33,7 +33,7 @@ $docker_context\
 $package\
 $cmd_duration\
 $time
-[└─](bold green)$character"""
+[└─](green)$character"""
 
 # ─── Prompt Character (Kali $ / #) ───────────────────────────
 
@@ -51,18 +51,18 @@ format = '[$symbol](bold blue)'
 show_always = true
 style_user = "bold blue"
 style_root = "bold red"
-format = '[\(](bold green)[$user]($style)'
+format = '[\(](green)[$user]($style)'
 
 [hostname]
 ssh_only = false
-format = '[$hostname](bold blue)[\)](bold green)'
+format = '[$hostname](bold blue)[\)](green)'
 
 # ─── Directory: -[ ~/dir ] ───────────────────────────────────
 
 [directory]
 style = "bold"
 read_only_style = "bold red"
-format = '[-\[](bold green)[$path]($style)[$read_only]($read_only_style)[\]](bold green)'
+format = '[-\[](green)[$path]($style)[$read_only]($read_only_style)[\]](green)'
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = "󰋜 "
@@ -78,13 +78,13 @@ read_only = " 󰌾"
 
 [git_branch]
 symbol = " "
-format = '([-\[](bold green)[位於 $symbol$branch](bold purple)[\]](bold green))'
+format = '([-\[](green)[位於 $symbol$branch](bold purple)[\]](green))'
 
 [git_commit]
 tag_symbol = "  "
 
 [git_status]
-format = '([-\[](bold green)[$all_status$ahead_behind](bold red)[\]](bold green))'
+format = '([-\[](green)[$all_status$ahead_behind](bold red)[\]](green))'
 conflicted = "衝突"
 ahead = "領先"
 behind = "落後"
@@ -96,7 +96,7 @@ renamed = "重新命名"
 stashed = "貯存"
 
 [git_state]
-format = '([-\[](bold green)[$state($progress_current/$progress_total)](bold yellow)[\]](bold green))'
+format = '([-\[](green)[$state($progress_current/$progress_total)](bold yellow)[\]](green))'
 rebase = "重定基底"
 merge = "合併"
 revert = "還原"
@@ -109,61 +109,61 @@ am_or_rebase = "am/重定基底"
 
 [fossil_branch]
 symbol = " "
-format = '([-\[](bold green)[位於 $symbol$branch](bold purple)[\]](bold green))'
+format = '([-\[](green)[位於 $symbol$branch](bold purple)[\]](green))'
 
 [hg_branch]
 symbol = " "
-format = '([-\[](bold green)[位於 $symbol$branch](bold purple)[\]](bold green))'
+format = '([-\[](green)[位於 $symbol$branch](bold purple)[\]](green))'
 
 # ─── Languages ───────────────────────────────────────────────
 
 [nodejs]
 symbol = " "
-format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version](bold cyan)[\]](green))'
 
 [rust]
 symbol = "󱘗 "
-format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version](bold cyan)[\]](green))'
 
 [golang]
 symbol = " "
-format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version](bold cyan)[\]](green))'
 
 [php]
 symbol = " "
-format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version](bold cyan)[\]](green))'
 
 [python]
 symbol = " "
-format = '([-\[](bold green)[$symbol$version(\($virtualenv\))](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version(\($virtualenv\))](bold cyan)[\]](green))'
 
 [java]
 symbol = " "
-format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version](bold cyan)[\]](green))'
 
 [ruby]
 symbol = " "
-format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$version](bold cyan)[\]](green))'
 
 [docker_context]
 symbol = " "
-format = '([-\[](bold green)[$symbol$context](bold cyan)[\]](bold green))'
+format = '([-\[](green)[$symbol$context](bold cyan)[\]](green))'
 
 # ─── Package (Chinese TC) ────────────────────────────────────
 
 [package]
 symbol = "󰏗 "
-format = '([-\[](bold green)[為 $symbol$version](bold yellow)[\]](bold green))'
+format = '([-\[](green)[為 $symbol$version](bold yellow)[\]](green))'
 
 # ─── Duration & Time (Chinese TC) ────────────────────────────
 
 [cmd_duration]
-format = '([-\[](bold green)[歷 $duration](bold yellow)[\]](bold green))'
+format = '([-\[](green)[歷 $duration](bold yellow)[\]](green))'
 
 [time]
 disabled = false
 time_format = "%R"
-format = '[-\[](bold green)[ $time](bold white)[\]](bold green)'
+format = '[-\[](green)[ $time](bold white)[\]](green)'
 
 # ─── OS symbols (auto-detected) ──────────────────────────────
 
