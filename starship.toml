@@ -1,16 +1,27 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# ─────────────────────────────────────────────────────────────
+# Kali-style two-line framed prompt, ANSI colors that adapt to
+# the terminal theme (like `ssh airbug`):
+#
+#   ┌──(user<os>host)-[~/dir]-[ git ]-[ langs ]-[ time ]   <os> = OS glyph connector
+#   └─$
+#
+# Same information as before (os/host/user, dir, git branch/
+# status/state, all languages, package, cmd_duration, time),
+# just re-framed in Kali's box style instead of powerline bg.
+# Each -[…] group is wrapped in (…) so it vanishes when empty.
+# ─────────────────────────────────────────────────────────────
+
 format = """
-[ ](bg:#1d2230)[ ](bg:#495065)[ ](bg:#757e9b)\
-[ $os$hostname  ](bg:#a3aed2 fg:#090c0c)\
+[┌──](bold green)\
 $username\
-[](bg:#769ff0 fg:#a3aed2)\
+$os\
+$hostname\
 $directory\
-[](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
 $git_state\
-[](fg:#394260 bg:#212736)\
 $nodejs\
 $rust\
 $golang\
@@ -20,37 +31,38 @@ $java\
 $ruby\
 $docker_context\
 $package\
-[](fg:#212736 bg:#1d2230)\
 $cmd_duration\
-$time\
-[](fg:#1d2230)\
-\n$character"""
+$time
+[└─](bold green)$character"""
 
-# ─── Prompt Character ───────────────────────────────────────
+# ─── Prompt Character (Kali $ / #) ───────────────────────────
 
 [character]
-success_symbol = "[](fg:#769ff0)"
-error_symbol = "[](fg:#e06c75)"
+success_symbol = '[\$ ](bold blue)'
+error_symbol = '[\$ ](bold red)'
 
-# ─── Username ────────────────────────────────────────────────                                                    
-                                                                                                                     
+# ─── Identity: ( user<os>host ) — OS glyph joins user & host ─
+
+[os]
+disabled = false
+format = '[$symbol](bold blue)'
+
 [username]
-show_always = true                                                                                                 
-style_user = "bg:#a3aed2 fg:#090c0c"                      
-style_root = "bg:#a3aed2 fg:#e06c75"                                                                               
-format = "[ $user ]($style)"
-
-# ─── Hostname ────────────────────────────────────────────────
+show_always = true
+style_user = "bold blue"
+style_root = "bold red"
+format = '[\(](bold green)[$user]($style)'
 
 [hostname]
 ssh_only = false
-format = "$hostname"
- 
-# ─── Directory ────────────────────────────────────────────────
+format = '[$hostname](bold blue)[\)](bold green)'
+
+# ─── Directory: -[ ~/dir ] ───────────────────────────────────
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
-format = "[ $path ]($style)"
+style = "bold"
+read_only_style = "bold red"
+format = '[-\[](bold green)[$path]($style)[$read_only]($read_only_style)[\]](bold green)'
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = "󰋜 "
@@ -66,15 +78,13 @@ read_only = " 󰌾"
 
 [git_branch]
 symbol = " "
-style = "bg:#394260"
-format = '[[ 位於 $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+format = '([-\[](bold green)[位於 $symbol$branch](bold purple)[\]](bold green))'
 
 [git_commit]
 tag_symbol = "  "
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+format = '([-\[](bold green)[$all_status$ahead_behind](bold red)[\]](bold green))'
 conflicted = "衝突"
 ahead = "領先"
 behind = "落後"
@@ -86,8 +96,7 @@ renamed = "重新命名"
 stashed = "貯存"
 
 [git_state]
-style = "bg:#394260"
-format = '[[ $state($progress_current/$progress_total) ](fg:#769ff0 bg:#394260)]($style)'
+format = '([-\[](bold green)[$state($progress_current/$progress_total)](bold yellow)[\]](bold green))'
 rebase = "重定基底"
 merge = "合併"
 revert = "還原"
@@ -96,84 +105,67 @@ bisect = "二分搜尋"
 am = "am"
 am_or_rebase = "am/重定基底"
 
-# ─── VCS (Chinese TC) ────────────────────────────────────────
+# ─── Other VCS (Chinese TC) ──────────────────────────────────
 
 [fossil_branch]
 symbol = " "
-style = "bg:#394260"
-format = '[[ 位於 $symbol$branch ](fg:#769ff0 bg:#394260)]($style)'
+format = '([-\[](bold green)[位於 $symbol$branch](bold purple)[\]](bold green))'
 
 [hg_branch]
 symbol = " "
-style = "bg:#394260"
-format = '[[ 位於 $symbol$branch ](fg:#769ff0 bg:#394260)]($style)'
+format = '([-\[](bold green)[位於 $symbol$branch](bold purple)[\]](bold green))'
 
-# ─── Languages (tokyo-night bg layer) ────────────────────────
+# ─── Languages ───────────────────────────────────────────────
 
 [nodejs]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
 
 [rust]
 symbol = "󱘗 "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
 
 [golang]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
 
 [php]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
 
 [python]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) (\($virtualenv\)) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version(\($virtualenv\))](bold cyan)[\]](bold green))'
 
 [java]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
 
 [ruby]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$version](bold cyan)[\]](bold green))'
 
 [docker_context]
 symbol = " "
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[$symbol$context](bold cyan)[\]](bold green))'
 
 # ─── Package (Chinese TC) ────────────────────────────────────
 
 [package]
 symbol = "󰏗 "
-style = "bg:#212736"
-format = '[[ 為 $symbol$version ](fg:#769ff0 bg:#212736)]($style)'
+format = '([-\[](bold green)[為 $symbol$version](bold yellow)[\]](bold green))'
 
 # ─── Duration & Time (Chinese TC) ────────────────────────────
 
 [cmd_duration]
-style = "bg:#1d2230"
-format = '[[ 歷 $duration ](fg:#a0a9cb bg:#1d2230)]($style)'
+format = '([-\[](bold green)[歷 $duration](bold yellow)[\]](bold green))'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+format = '[-\[](bold green)[ $time](bold white)[\]](bold green)'
 
-# ─── OS (auto-detected) ──────────────────────────────────────
-
-[os]
-disabled = false
-format = "$symbol"
+# ─── OS symbols (auto-detected) ──────────────────────────────
 
 [os.symbols]
 Alpaquita = " "
